@@ -8,4 +8,4 @@ By adding a bool value to indicate whether the mouse speed have been changed, th
 Maybe change this into C#, since it's quite easier to look at than C++.
 
 # Purpose
-TL;DR: THMouse doesn't support TH15 and TH18 (TH17 untested, other mainline games (Touhou with decimal number installment) are ok, TH13 and later have cursor).
+TL;DR: THMouse doesn't support TH15 and TH18 (TH17 untested, other mainline games from 6 -> 16 (Touhou with decimal number installment) are ok, TH13 and later have cursor).
