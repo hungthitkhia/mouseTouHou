@@ -44,7 +44,7 @@ int FindProcessPid(const WCHAR * pszProcessName)
 	Process32First(hSnapShot, &pInfo);
 	do
 	{
-		if (_tcscmp(_tcsdup(pInfo.szExeFile), pszProcessName) == 0)
+		if (wcscmp(_wcsdup(pInfo.szExeFile), pszProcessName) == 0)
 		{
 			id = pInfo.th32ProcessID;
 			break;
