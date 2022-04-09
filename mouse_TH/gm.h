@@ -1,33 +1,39 @@
-
-void GetGame(HANDLE &gmHwnd, int &Gmnum,int& pid,int& arr_num);
+#pragma once
+#include<vector>
+#include<windef.h>
+#include<math.h>
+#include<stdio.h>
+#include<string>
+#include "Proc.h"
+#define GEN1_POSRECT {0.065f, 0.085f, 0.635f, 0.93125f}
+#define GEN1_STAGERECT {8.0f, 16.0f, 376.0f, 432.0f}
+#define SPINOFF_POSRECT {0.215f, 0.125f, 0.785f, 0.93125f}
+using std::vector;
+using std::wstring;
+void GetGameData();
 void init();
-void init2();
-class Game
+void initSA();
+struct Rect
 {
-public:
-	static Game allGm[40];
-	float ratio;//int-float比例
+    float left, top, right, bottom, width, height;
+    Rect(float a, float b, float c, float d): left(a), top(b), right(c), bottom(d), width(c - a), height(d - b) {}
+    Rect(): Rect(0, 0, 0, 0) {}
+};
+struct GameData
+{
+    int id;
+    DWORD playerPtr, offsetPtr, pausePtr;
+    vector<wstring> exeName;
+    float ratio;
+    Rect positionBound, stageBound;
+
 	int MouseControl();
 	bool isPause();
-	DWORD isInGm();
-	int num;//第几作,15=gzz
-	DWORD ptPlBasic;
-	DWORD ptPloffs;
-	float* ptRunSpd;
-	float xmax, ymax, xmin, ymin,ysz,xsz;
-	float StageXMin,StageXMax;
-	float StageYMin,StageYMax;
-	float StageXSz, StageYSz;
-	const WCHAR *wdName;
-	Game(int in_num,DWORD in_ptPl,DWORD in_offs,float* in_ptRSpd,float in_xmin,float in_ymin,float in_xmax,float in_ymax,const WCHAR* in_wdName,
-		 float inPtPosRatio = 128,float inSXMN=-184, float inSXMX=184, float inSYMN=32, float inSYMX=432)
-	:num(in_num), ratio(inPtPosRatio),ptPlBasic(in_ptPl),ptPloffs(in_offs),ptRunSpd(in_ptRSpd),xmax(in_xmax),ymax(in_ymax),xmin(in_xmin),ymin(in_ymin),wdName(in_wdName),
-	StageXMin(inSXMN),StageXMax(inSXMX),StageYMin(inSYMN),StageYMax(inSYMX) {
-		StageXSz = StageXMax - StageXMin;
-		StageYSz = StageYMax - StageYMin;
-		ysz = ymax - ymin;
-		xsz = xmax - xmin;
-	};
-	Game() { num = -1; };
+	DWORD isInGame();
+
+	GameData(int num, DWORD ptr, DWORD offset, DWORD pauseAdd, vector<wstring> name = {}, float ratio = 128.0f, Rect pos = {0.065f, 0.125f, 0.635f, 0.93125f}, Rect stage = {-184.0f, 32.0f, 184.0f, 432.0f})
+	: id(num), playerPtr(ptr), offsetPtr(offset), pausePtr(pauseAdd), exeName(name), ratio(ratio), positionBound(pos), stageBound(stage)
+    {}
+	GameData(): id(0) {}
 };
 

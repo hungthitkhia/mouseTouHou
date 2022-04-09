@@ -5,61 +5,59 @@
 #include "gm.h"
 #pragma GCC optimize(2)
 using namespace std;
-extern HANDLE GM_HWND;
-extern int NW_GAME;
-extern int PID;
-extern int ARR_NUM;
-extern HWND WIND_HWND;
-WCHAR OUT_TEXT[512];
-extern int NORMAL_MOUSE_SPEED;
-extern int SLOW_MOUSE_SPEED;
+
+extern HANDLE gameHandle;
+extern int pid;
+extern HWND windowHandle;
+extern int normalSpeed;
+extern int slowSpeed;
+extern GameData currentGame;
+
 bool SlowChanged = false, NormalChanged = false;
 void setMouseSpeed()
 {
 	if (GetAsyncKeyState(VK_LSHIFT))
 	{
 		if (!SlowChanged)
-			NormalChanged = !(SlowChanged = SystemParametersInfo(SPI_SETMOUSESPEED, 0, (void*)SLOW_MOUSE_SPEED, SPIF_SENDCHANGE));
+			NormalChanged = !(SlowChanged = SystemParametersInfo(SPI_SETMOUSESPEED, 0, &normalSpeed, SPIF_SENDCHANGE));
 	}
 	else if (!NormalChanged)
 	{
-		SlowChanged = !(NormalChanged = SystemParametersInfo(SPI_SETMOUSESPEED, 0, (void*)NORMAL_MOUSE_SPEED, SPIF_SENDCHANGE));
+		SlowChanged = !(NormalChanged = SystemParametersInfo(SPI_SETMOUSESPEED, 0, &slowSpeed, SPIF_SENDCHANGE));
 	}
 
 }
 
 int main()
 {
+    wchar_t out_text[512];
 	init();
-	if (NORMAL_MOUSE_SPEED == -1)
+	if (normalSpeed == -1)
 	{
-		MessageBox(NULL, OUT_TEXT, L"获取鼠标速度失败", MB_OK);
+		MessageBox(NULL, L"Failed to get mouse speed", NULL, MB_OK);
 		return 0;
 	}
-	GetGame(GM_HWND, NW_GAME,PID, ARR_NUM);
-	init2();
-	if (GM_HWND != NULL)
+	GetGameData();
+	if (gameHandle != NULL)
 	{
-		wsprintf(OUT_TEXT,L"进程pid号:%d\n当前游戏版本:%d\n默认鼠标速度:%d\n请不要在按shift的时候关闭程序\n如有意外请使用「控制面板」\n对数位板等无效请注意", PID, Game::allGm[ARR_NUM].num,NORMAL_MOUSE_SPEED);
-		MessageBox(NULL, OUT_TEXT, L"加载成功", MB_OK);
-		Game& nwGame = Game::allGm[ARR_NUM];
-		ios::sync_with_stdio(0);
+		swprintf_s(out_text, L"Game process PID: %d\nGame ID: %d\nDefault mouse speed: %d", pid, currentGame.id, normalSpeed);
+		MessageBox(NULL, out_text, L"Load successful", MB_OK);
 		while (1){
 			setMouseSpeed();
-			switch (nwGame.MouseControl())
+			switch (currentGame.MouseControl())
 			{
-			case PAUSE_FLAG:
-				system("cls");
-				cout << "时停中不能移动";
-				break;
-			case NOT_IN_GAME_FLAG:
-				system("cls");
-				cout << "未发现自机坐标,请进入游戏\n";
-				Sleep(16);
-				break;
-			default:
-			case NORMAL_FLAG:
-				break;
+                case PAUSE_FLAG:
+                    Clear();
+                    printf("Game paused.");
+                    break;
+                case NOT_IN_GAME_FLAG:
+                    Clear();
+                    printf("Failed to get player coordinates, the game is most likely in the main menu.");
+                    Sleep(5);
+                    break;
+                default:
+                case NORMAL_FLAG:
+                    break;
 			}
 		}
 	}
