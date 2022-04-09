@@ -27,13 +27,13 @@ struct GameData
     float ratio;
     Rect positionBound, stageBound;
 
-	int MouseControl();
-	bool isPause();
-	DWORD isInGame();
+    int MouseControl();
+    bool isPause();
+    DWORD isInGame();
 
-	GameData(int num, DWORD ptr, DWORD offset, DWORD pauseAdd, vector<wstring> name = {}, float ratio = 128.0f, Rect pos = {0.065f, 0.125f, 0.635f, 0.93125f}, Rect stage = {-184.0f, 32.0f, 184.0f, 432.0f})
-	: id(num), playerPtr(ptr), offsetPtr(offset), pausePtr(pauseAdd), exeName(name), ratio(ratio), positionBound(pos), stageBound(stage)
+    GameData(int num, DWORD ptr, DWORD offset, DWORD pauseAdd, vector<wstring> name = {}, float ratio = 128.0f, Rect pos = {0.065f, 0.125f, 0.635f, 0.93125f}, Rect stage = {-184.0f, 32.0f, 184.0f, 432.0f})
+    : id(num), playerPtr(ptr), offsetPtr(offset), pausePtr(pauseAdd), exeName(name), ratio(ratio), positionBound(pos), stageBound(stage)
     {}
-	GameData(): id(0) {}
+    GameData(): id(0) {}
 };
 
