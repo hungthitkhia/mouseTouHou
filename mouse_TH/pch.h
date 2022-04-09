@@ -25,3 +25,4 @@
 #define NORMAL_FLAG 0x0
 #define QWORD unsigned long long
 #include<cmath>
+#define USE_NTWVM 0
