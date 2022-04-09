@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "gm.h"
 #define DATA_SIZE 21
 HANDLE gameHandle;
@@ -26,18 +26,18 @@ void init()
 
     slowSpeed = floor(normalSpeed * 0.4f + 0.5f);
 
-    data[0]  = GameData(6 ,		0x006CAA68, 0x0  , 0x006C6EC0, {L"th06.exe", L"東方紅魔郷.exe", L"搶曽峠杺嫿.exe"}, 1.0f  , GEN1_POSRECT, GEN1_STAGERECT);
-    data[1]  = GameData(7 ,		0x004BE408, 0x0  , 0x00575AC8, {L"th07.exe"                                     }, 1.0f  , GEN1_POSRECT, GEN1_STAGERECT);
-    data[2]  = GameData(8 ,		0x017D61AC, 0x0  , 0x017CE8E0, {L"th08.exe"                                     }, 1.0f  , GEN1_POSRECT, GEN1_STAGERECT);
-    data[3]  = GameData(10,		0x00477834, 0x3CC, 0x00476F78, {L"th10.exe", L"th10c.exe"                       }, 100.0f);
-    data[4]  = GameData(11,		-1		  , 0x0  , 0x004A7948, {L"th11.exe"                                     });
+    data[0]  = GameData(6 ,	    0x006CAA68, 0x0  , 0x006C6EC0, {L"th06.exe", L"東方紅魔郷.exe", L"搶曽峠杺嫿.exe"}, 1.0f  , GEN1_POSRECT, GEN1_STAGERECT);
+    data[1]  = GameData(7 ,	    0x004BE408, 0x0  , 0x00575AC8, {L"th07.exe"                                     }, 1.0f  , GEN1_POSRECT, GEN1_STAGERECT);
+    data[2]  = GameData(8 ,	    0x017D61AC, 0x0  , 0x017CE8E0, {L"th08.exe"                                     }, 1.0f  , GEN1_POSRECT, GEN1_STAGERECT);
+    data[3]  = GameData(10,	    0x00477834, 0x3CC, 0x00476F78, {L"th10.exe", L"th10c.exe"                       }, 100.0f);
+    data[4]  = GameData(11,	    -1		  , 0x0  , 0x004A7948, {L"th11.exe"                                     });
     data[5]  = GameData(12,     0x004B4514, 0x988, 0x004B2ED0, {L"th12.exe", L"th12c.exe"                       });
-    data[6]  = GameData(13,		0x004C22C4, 0x5C4, 0x004C0A28, {L"th13.exe", L"th13c.exe"                       });
-    data[7]  = GameData(14,		0x004DB67C, 0x5EC, 0x004D8F58, {L"th14.exe"                                     });
-    data[8]  = GameData(15,		0x004E9BB8, 0x624, 0x004E73E8, {L"th15.exe"                                     });
-    data[9]  = GameData(16,		0x004A6EF8, 0x61C, 0x004A5788, {L"th16.exe"                                     });
-    data[10] = GameData(17,		0x004B77D0, 0x61C, -1        , {L"th17.exe"                                     });
-    data[11] = GameData(18,		0x004CF410, 0x62C, -1        , {L"th18.exe"                                     });
+    data[6]  = GameData(13,	    0x004C22C4, 0x5C4, 0x004C0A28, {L"th13.exe", L"th13c.exe"                       });
+    data[7]  = GameData(14,	    0x004DB67C, 0x5EC, 0x004D8F58, {L"th14.exe"                                     });
+    data[8]  = GameData(15,	    0x004E9BB8, 0x624, 0x004E73E8, {L"th15.exe"                                     });
+    data[9]  = GameData(16,	    0x004A6EF8, 0x61C, 0x004A5788, {L"th16.exe"                                     });
+    data[10] = GameData(17,	    0x004B77D0, 0x61C, -1        , {L"th17.exe"                                     });
+    data[11] = GameData(18,	    0x004CF410, 0x62C, -1        , {L"th18.exe"                                     });
 
     data[12] = GameData(9, 0x004A7D94, 0x1B88, 0x004B36B8, {L"th09.exe"}, 1.0f, {0.04f, 0.125f, 0.46f, 0.94125f}, {-136.0f, 136.0f, 32.0f, 436.0f});
 
