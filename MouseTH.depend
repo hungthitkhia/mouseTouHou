@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1648649362 source:d:\cubi\mousetouhou-master\mouse_th\pch.cpp
+	"pch.h"
+
+1649246472 d:\cubi\mousetouhou-master\mouse_th\pch.h
+	<windows.h>
+	<tlhelp32.h>
+	<cstdio>
+	<cstring>
+	<stdlib.h>
+	<cctype>
+	<tchar.h>
+	<iostream>
+	<string>
+	<fstream>
+	<algorithm>
+	<cmath>
+
+1649422176 source:d:\cubi\mousetouhou-master\mouse_th\mouse_th.cpp
+	"pch.h"
+	"gm.h"
+
+1649422249 d:\cubi\mousetouhou-master\mouse_th\gm.h
+	<vector>
+	<windef.h>
+	<math.h>
+	<stdio.h>
+	<string>
+	"Proc.h"
+
+1649422265 source:d:\cubi\mousetouhou-master\mouse_th\gm.cpp
+	"gm.h"
+
+1649422246 d:\cubi\mousetouhou-master\mouse_th\proc.h
+	<ntdef.h>
+
+1649320251 source:d:\cubi\mousetouhou-master\mouse_th\proc.cpp
+	"pch.h"
+
