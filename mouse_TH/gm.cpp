@@ -31,7 +31,7 @@ void init()
     data[2]  = GameData(8 ,	    0x017D61AC, 0x0  , 0x017CE8E0, {L"th08.exe"                                     }, 1.0f  , GEN1_POSRECT, GEN1_STAGERECT);
     data[3]  = GameData(10,	    0x00477834, 0x3CC, 0x00476F78, {L"th10.exe", L"th10c.exe"                       }, 100.0f);
     data[4]  = GameData(11,	    -1        , 0x0  , 0x004A7948, {L"th11.exe"                                     });
-    data[5]  = GameData(12,     0x004B4514, 0x988, 0x004B2ED0, {L"th12.exe", L"th12c.exe"                       });
+    data[5]  = GameData(12,         0x004B4514, 0x988, 0x004B2ED0, {L"th12.exe", L"th12c.exe"                       });
     data[6]  = GameData(13,	    0x004C22C4, 0x5C4, 0x004C0A28, {L"th13.exe", L"th13c.exe"                       });
     data[7]  = GameData(14,	    0x004DB67C, 0x5EC, 0x004D8F58, {L"th14.exe"                                     });
     data[8]  = GameData(15,	    0x004E9BB8, 0x624, 0x004E73E8, {L"th15.exe"                                     });
